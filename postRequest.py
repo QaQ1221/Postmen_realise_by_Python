@@ -1,10 +1,10 @@
 import requests
 from requests.auth import HTTPBasicAuth
 
-# API 终端地址
+# write info directly
 url = "https://uat-cps-api.eminxing.com/open-api/v2/order/create"
 
-# 多条 JSON 数据
+# data
 payloads = [
     {
         "cOrderNo": "CIFR4589222452317",
@@ -62,7 +62,7 @@ payloads = [
             "currency": "USD"
         }
     },
-    # 第二条 JSON 数据
+    # second data
     {
         "cOrderNo": "CIFR4589222452318",
         "productType": "EXP",
@@ -116,16 +116,16 @@ payloads = [
     }
 ]
 
-# 请求头
+# header
 headers = {
     "Content-Type": "application/json"
 }
 
-# 用户名和密码
+# user and pwd
 username = "YT_temu"
 password = "YT_temu@123"
 
-# 循环遍历 JSON 数据列表并发送请求
+# for read
 for payload in payloads:
     response = requests.post(
         url,
@@ -134,7 +134,7 @@ for payload in payloads:
         auth=HTTPBasicAuth(username, password)
     )
 
-    # 打印每次请求的返回结果
+    # print
     print(f"Order No: {payload['cOrderNo']}")
     print("Status Code:", response.status_code)
     print("Response Body:", response.text)
